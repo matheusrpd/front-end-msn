@@ -9,21 +9,25 @@ const firebaseConfig = {
     messagingSenderId: "279549137420",
     appId: "1:279549137420:web:24859825a29a110000d429",
     measurementId: "G-SL2BP7EZ30"
-  };
-
-export const startFirebase = () => {
-    firebase.initializeApp(firebaseConfig);
 };
+
+firebase.initializeApp(firebaseConfig);
+const messaging = firebase.messaging();
+
+messaging.onMessage((payload) => {
+  console.log(payload);
+})
 
 export const askForPermissioToReceiveNotifications = async () => {
     try {
       const messaging = firebase.messaging();
       await messaging.requestPermission();
       const token = await messaging.getToken();
-        
+      console.log(token);
       return token;
 
     } catch (err) {
       console.error(err);
     }
 }
+
