@@ -1,12 +1,12 @@
 import React from 'react';
-import './App.css';
-import { askForPermissioToReceiveNotifications } from './pushNotification';
+import './styles/global.css';
+// import { askForPermissioToReceiveNotifications } from './pushNotification';
+import Routes from './routes';
 
 function App() {
   return (
     <div className="App">
-      <h1>FRONT END MSN</h1>
-      <button onClick={askForPermissioToReceiveNotifications}>Receber notificação</button>
+      <Routes />
     </div>
   );
 }
