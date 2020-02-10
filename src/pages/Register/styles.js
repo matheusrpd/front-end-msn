@@ -56,14 +56,6 @@ export const Input = styled.input`
   }
 `;
 
-export const Link = styled.strong`
-  font-size: 14px;
-  font-weight: bold;
-  color: #0e153a;
-  align-self: flex-end;
-  cursor: pointer;
-`;
-
 export const Button = styled.button`
   height: 40px;
   border: 0;
@@ -71,7 +63,5 @@ export const Button = styled.button`
   background-color: #3d5af1;
   color: #fff;
   letter-spacing: 1px;
-  margin-top: 16px;
-  margin-bottom: 24px;
   cursor: pointer;
 `;

@@ -1,5 +1,11 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable react/jsx-one-expression-per-line */
+/* eslint-disable react/prop-types */
+/* eslint no-unused-expressions: [2, { allowTernary: true }] */
 import React, { useState } from 'react';
-import { Container, CardContent, CardIllustration, Title, SubTitle, Form, Input, Button, Link } from './styles';
+import {
+  Container, CardContent, CardIllustration, Title, SubTitle, Form, Input, Button, Link,
+} from './styles';
 import api from '../../services/api';
 
 const Login = ({ history }) => {
@@ -15,12 +21,16 @@ const Login = ({ history }) => {
 
     localStorage.setItem('user', token);
 
-    history.push('/main');
-  }
+    history.push('/main', { token });
+  };
 
   const handleChange = (event) => {
     (event.target.name === 'email') ? setEmail(event.target.value) : setPassword(event.target.value);
-  }
+  };
+
+  const handleRegister = () => {
+    history.push('/register');
+  };
 
   return (
     <Container>
@@ -49,13 +59,13 @@ const Login = ({ history }) => {
           <Button>Entrar</Button>
         </Form>
 
-        <p>Ainda não possui cadastro? <Link>Clique aqui</Link></p>
+        <p>Ainda não possui cadastro? <Link onClick={handleRegister}>Clique aqui</Link></p>
       </CardContent>
       <CardIllustration>
         <img src="" alt="" />
       </CardIllustration>
     </Container>
   );
-}
+};
 
 export default Login;
