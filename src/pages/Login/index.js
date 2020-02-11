@@ -7,6 +7,7 @@ import {
   Container, CardContent, CardIllustration, Title, SubTitle, Form, Input, Button, Link,
 } from './styles';
 import api from '../../services/api';
+import { login } from '../../services/auth';
 
 const Login = ({ history }) => {
   const [email, setEmail] = useState();
@@ -19,9 +20,9 @@ const Login = ({ history }) => {
 
     const { token } = response.data;
 
-    localStorage.setItem('user', token);
+    login(token);
 
-    history.push('/main', { token });
+    history.push('/', { token });
   };
 
   const handleChange = (event) => {

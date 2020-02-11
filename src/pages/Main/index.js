@@ -7,16 +7,9 @@ const Main = () => {
   useEffect(() => {
     const askNotification = async () => {
       const token_notification = await askForPermissioToReceiveNotifications();
-      const token = localStorage.getItem('user');
-
-      const reqConfig = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
 
       try {
-        await api.put('/users', { token_notification }, reqConfig);
+        await api.put('/users', { token_notification });
       } catch (error) {
         console.error(error);
       }
