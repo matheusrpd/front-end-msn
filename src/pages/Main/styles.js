@@ -8,12 +8,12 @@ export const Container = styled.div`
 	align-items: center;
 
   form {
-    width: 40%;
+    width: 100%;
     display: flex;
     flex-direction: column;
 
     select {
-      width: 40%; 
+      width: 50%; 
     }
 
     textarea {
