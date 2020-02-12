@@ -7,6 +7,16 @@ export const Container = styled.div`
   justify-content: center;
 	align-items: center;
 
+  .btn {
+      padding: 10px;
+      background-color: #3d5af1;
+      border: 0;
+      border-radius: 4px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
   form {
     width: 100%;
     display: flex;
@@ -24,16 +34,6 @@ export const Container = styled.div`
       font-size: 18px;
       border: 1px solid #b5c3cc;
       color: #3d5af1;
-    }
-
-    button {
-      padding: 10px;
-      background-color: #3d5af1;
-      border: 0;
-      border-radius: 4px;
-      color: #fff;
-      font-weight: bold;
-      cursor: pointer;
     }
   }
 `;

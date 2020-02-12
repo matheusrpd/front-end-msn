@@ -60,10 +60,10 @@ const Main = () => {
         <Form onSubmit={handleSubmit}>
           <Select options={options} name="user" />
           <Input name="message" multiline />
-          <button type="submit">Enviar</button>
+          <button type="submit" className="btn">Enviar</button>
         </Form>
       </Modal>
-      <button type="button" onClick={showModal}>Open</button>
+      <button type="button" onClick={showModal} className="btn">Enviar mensagem</button>
     </Container>
   );
 };
