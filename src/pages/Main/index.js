@@ -4,8 +4,11 @@
 /* eslint-disable camelcase */
 import React, { useState, useEffect } from 'react';
 import { Form, Select, Input } from '@rocketseat/unform';
-import { askForPermissioToReceiveNotifications } from '../../pushNotification';
+
+import askNotification from '../../utils/askNotification';
+import loadOptions from '../../utils/loadOptionsSelect';
 import api from '../../services/api';
+
 import Modal from '../../components/Modal';
 
 import { Container } from './styles';
@@ -15,36 +18,10 @@ const Main = () => {
   const [messages, setMessages] = useState([]);
   const [show, setShow] = useState();
 
-  useEffect(() => {
-    const askNotification = async () => {
-      const token_notification = await askForPermissioToReceiveNotifications();
-
-      try {
-        await api.put('/users', { token_notification });
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  useEffect(async () => {
     askNotification();
-  }, []);
-
-  useEffect(() => {
-    const loadOptions = async () => {
-      const opt = [];
-      const response = await api.get('/users');
-      const users = response.data;
-
-      users.forEach((user) => {
-        const objUser = {
-          id: user.id,
-          title: user.name,
-        };
-        opt.push(objUser);
-      });
-
-      setOptions(opt);
-    };
-    loadOptions();
+    const opts = await loadOptions();
+    setOptions(opts);
   }, []);
 
   useEffect(() => {
