@@ -18,10 +18,13 @@ const Main = () => {
   const [messages, setMessages] = useState([]);
   const [show, setShow] = useState();
 
-  useEffect(async () => {
-    askNotification();
-    const opts = await loadOptions();
-    setOptions(opts);
+  useEffect(() => {
+    const loadFunctions = async () => {
+      askNotification();
+      const opts = await loadOptions();
+      setOptions(opts);
+    };
+    loadFunctions();
   }, []);
 
   useEffect(() => {
