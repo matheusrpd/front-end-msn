@@ -5,16 +5,18 @@
 import React, { useState, useEffect } from 'react';
 import { Form, Select, Input } from '@rocketseat/unform';
 
+import { parseISO, format } from 'date-fns';
 import askNotification from '../../utils/askNotification';
 import loadOptions from '../../utils/loadOptionsSelect';
 import api from '../../services/api';
 
 import Modal from '../../components/Modal';
 
-import { Container } from './styles';
+import { Container, Messages, Message } from './styles';
 
 const Main = () => {
   const [options, setOptions] = useState([]);
+  // eslint-disable-next-line no-unused-vars
   const [messages, setMessages] = useState([]);
   const [show, setShow] = useState();
 
@@ -33,7 +35,7 @@ const Main = () => {
       setMessages(response.data);
     };
     loadMessages();
-  }, [messages]);
+  }, []);
 
   const handleSubmit = async (data) => {
     const { user: receiver_id, message: text } = data;
@@ -46,6 +48,13 @@ const Main = () => {
     }
   };
 
+  const formatDate = (date) => {
+    const parsedDate = parseISO(date);
+    const formatedDate = format(parsedDate,
+      "dd'/'MM'/'yyyy, 'às' HH:mm'h'");
+    return formatedDate;
+  };
+
   const showModal = () => {
     setShow(true);
   };
@@ -56,14 +65,27 @@ const Main = () => {
 
   return (
     <Container>
-      <Modal show={show} handleClose={hideModal}>
-        <Form onSubmit={handleSubmit}>
-          <Select options={options} name="user" />
-          <Input name="message" multiline />
-          <button type="submit" className="btn">Enviar</button>
-        </Form>
-      </Modal>
-      <button type="button" onClick={showModal} className="btn">Enviar mensagem</button>
+      <Messages>
+        { messages.map((message) => (
+          <Message key={message.id}>
+            <div>
+              <p>{message.text}</p>
+              <strong>{message.sender.name}</strong>
+            </div>
+            <p className="date">{formatDate(message.date)}</p>
+          </Message>
+        ))}
+      </Messages>
+      <>
+        <Modal show={show} handleClose={hideModal}>
+          <Form onSubmit={handleSubmit}>
+            <Select options={options} name="user" />
+            <Input name="message" multiline />
+            <button type="submit" className="btn">Enviar</button>
+          </Form>
+        </Modal>
+        <button type="button" onClick={showModal} className="btn">Enviar mensagem</button>
+      </>
     </Container>
   );
 };
