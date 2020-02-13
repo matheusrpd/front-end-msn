@@ -1,6 +1,7 @@
 /* eslint-disable no-restricted-globals */
 
-const CACHE_NAME = 'cache-v1';
+const CACHE_NAME = 'static-cache-v1';
+const DATA_CACHE_NAME = 'data-cache-v1';
 const urlsToCache = [
   '/',
   'static/js/bundle.js',
@@ -33,12 +34,27 @@ self.addEventListener('activate', (e) => {
   e.waitUntil(clearOldCache());
 });
 
-const getResponseByRequest = async (request) => {
+const getResponseByRequestDinamic = async (request) => {
+  const dataCache = await caches.open(DATA_CACHE_NAME);
+
+  return fetch(request).then((response) => {
+    if (response.status === 200) {
+      dataCache.put(request.url, response.clone());
+    }
+    return response;
+  }).catch(() => dataCache.match(request));
+};
+
+const getResponseByRequestStatic = async (request) => {
   const cache = await caches.open(CACHE_NAME);
   const response = await cache.match(request);
   return response || fetch(request);
 };
 
 self.addEventListener('fetch', (e) => {
-  e.respondWith(getResponseByRequest(e.request));
+  if (e.request.url.includes('/messages') || e.request.url.includes('/users')) {
+    e.respondWith(getResponseByRequestDinamic(e.request));
+  } else {
+    e.respondWith(getResponseByRequestStatic(e.request));
+  }
 });
