@@ -3,22 +3,16 @@ import styled from 'styled-components';
 export const Container = styled.div`
   height: 100vh;
   width: 100vw;
+  padding: 10%;
   display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const CardContent = styled.div`
-  background: #fff;
-  height: 100vh;
-  width: 40%;
-  padding: 10%;
-  display: flex;
   flex-direction: column;
-`;
-
-export const CardIllustration = styled.div`
-  height: 100vh;
-  width: 60%;
-  background: #3d5af1;
+  width: 100%;
+  max-width: 500px;
 `;
 
 export const Title = styled.h1`
@@ -36,6 +30,7 @@ export const SubTitle = styled.h3`
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
+
 `;
 
 export const Input = styled.input`

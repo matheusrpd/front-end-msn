@@ -51,8 +51,14 @@ const Main = () => {
   const formatDate = (date) => {
     const parsedDate = parseISO(date);
     const formatedDate = format(parsedDate,
-      "dd'/'MM'/'yyyy, 'às' HH:mm'h'");
+      "dd'/'MM'/'yyyy");
     return formatedDate;
+  };
+
+  const formatText = (text) => {
+    const subText = text.substr(0, 25);
+    const formatedText = `${subText}...`;
+    return formatedText;
   };
 
   const showModal = () => {
@@ -69,7 +75,7 @@ const Main = () => {
         { messages.map((message) => (
           <Message key={message.id}>
             <div>
-              <p>{message.text}</p>
+              <p>{formatText(message.text)}</p>
               <strong>{message.sender.name}</strong>
             </div>
             <p className="date">{formatDate(message.date)}</p>

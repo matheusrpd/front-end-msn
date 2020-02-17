@@ -4,7 +4,7 @@
 /* eslint no-unused-expressions: [2, { allowTernary: true }] */
 import React, { useState } from 'react';
 import {
-  Container, CardContent, CardIllustration, Title, SubTitle, Form, Input, Button, Link,
+  Container, CardContent, Title, SubTitle, Form, Input, Button, Link,
 } from './styles';
 import api from '../../services/api';
 import { login } from '../../services/auth';
@@ -62,9 +62,6 @@ const Login = ({ history }) => {
 
         <p>Ainda não possui cadastro? <Link onClick={handleRegister}>Clique aqui</Link></p>
       </CardContent>
-      <CardIllustration>
-        <img src="" alt="" />
-      </CardIllustration>
     </Container>
   );
 };

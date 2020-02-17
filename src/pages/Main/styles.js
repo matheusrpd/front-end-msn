@@ -24,11 +24,11 @@ export const Container = styled.div`
     flex-direction: column;
 
     select {
-      width: 50%; 
+      width: 80%; 
     }
 
     textarea {
-      height: 400px;
+      height: 300px;
       margin: 5% 0;
       border-radius: 5px;
       padding: 20px;
@@ -40,15 +40,21 @@ export const Container = styled.div`
 `;
 
 export const Messages = styled.section`
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 `;
 
 export const Message = styled.div`
-  width: 30vw;
-  padding: 20px;
+  width: 90%;
+  max-width: 600px;
+  height: 80px;
+  margin-bottom: 24px;
+  padding: 10px;
   background: #fff;
   border-radius: 10px;
-  margin-bottom: 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -56,11 +62,16 @@ export const Message = styled.div`
   -webkit-box-shadow: 0px 3px 11px 0px rgba(181,195,204,1);
   -moz-box-shadow: 0px 3px 11px 0px rgba(181,195,204,1);
 
+  p {
+    font-size: 14px;
+  }
+
   strong {
     color: #222;
+    font-size: 14px;
   }
 
   .date {
-    font-size: 14px;
+    font-size: 10px;
   }
 `;

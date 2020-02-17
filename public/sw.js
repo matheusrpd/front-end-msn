@@ -52,7 +52,7 @@ const getResponseByRequestStatic = async (request) => {
 };
 
 self.addEventListener('fetch', (e) => {
-  if (e.request.url.includes('/messages') || e.request.url.includes('/users')) {
+  if (e.request.url.includes('/messages')) {
     e.respondWith(getResponseByRequestDinamic(e.request));
   } else {
     e.respondWith(getResponseByRequestStatic(e.request));
