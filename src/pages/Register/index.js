@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import {
   Container,
   CardContent,
-  CardIllustration,
   Title, SubTitle,
   Form,
   Input,
@@ -30,7 +29,7 @@ const Login = ({ history }) => {
       name, email, password,
     });
 
-    history.push('/');
+    history.push('/login');
   };
 
   const handleChange = (event) => {
@@ -87,9 +86,6 @@ const Login = ({ history }) => {
           <Button>Cadastrar-se</Button>
         </Form>
       </CardContent>
-      <CardIllustration>
-        <img src="" alt="" />
-      </CardIllustration>
     </Container>
   );
 };

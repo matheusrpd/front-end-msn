@@ -4,6 +4,8 @@ export const Container = styled.div`
   height: 100vh;
   width: 100vw;
   display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const CardContent = styled.div`
@@ -13,12 +15,6 @@ export const CardContent = styled.div`
   padding: 10%;
   display: flex;
   flex-direction: column;
-`;
-
-export const CardIllustration = styled.div`
-  height: 100vh;
-  width: 60%;
-  background: #3d5af1;
 `;
 
 export const Title = styled.h1`
